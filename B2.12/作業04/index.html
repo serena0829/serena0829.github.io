@@ -1,68 +1,125 @@
 <!DOCTYPE html>
-<!--
-	NOTES:
-	1. All tokens are represented by '$' sign in the template.
-	2. You can write your code only wherever mentioned.
-	3. All occurrences of existing tokens will be replaced by their appropriate values.
-	4. Blank lines will be removed automatically.
-	5. Remove unnecessary comments before creating your template.
--->
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="authoring-tool" content="Adobe_Animate_CC">
-<title>萼婆婆_HTML5 Canvas</title>
-<!-- write your code here -->
-<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-<script src="萼婆婆_HTML5 Canvas.js"></script>
-<script>
-var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
-function init() {
-	canvas = document.getElementById("canvas");
-	anim_container = document.getElementById("animation_container");
-	dom_overlay_container = document.getElementById("dom_overlay_container");
-	var comp=AdobeAn.getComposition("165DE6820EA62843B36E564BE885AED3");
-	var lib=comp.getLibrary();
-	var loader = new createjs.LoadQueue(false);
-	loader.addEventListener("fileload", function(evt){handleFileLoad(evt,comp)});
-	loader.addEventListener("complete", function(evt){handleComplete(evt,comp)});
-	var lib=comp.getLibrary();
-	loader.loadManifest(lib.properties.manifest);
-}
-function handleFileLoad(evt, comp) {
-	var images=comp.getImages();	
-	if (evt && (evt.item.type == "image")) { images[evt.item.id] = evt.result; }	
-}
-function handleComplete(evt,comp) {
-	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
-	var lib=comp.getLibrary();
-	var ss=comp.getSpriteSheet();
-	var queue = evt.target;
-	var ssMetadata = lib.ssMetadata;
-	for(i=0; i<ssMetadata.length; i++) {
-		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
-	}
-	exportRoot = new lib.萼婆婆_HTML5Canvas();
-	stage = new lib.Stage(canvas);	
-	//Registers the "tick" event listener.
-	fnStartAnimation = function() {
-		stage.addChild(exportRoot);
-		createjs.Ticker.framerate = lib.properties.fps;
-		createjs.Ticker.addEventListener("tick", stage);
-	}	    
-	//Code to support hidpi screens and responsive scaling.
-	AdobeAn.makeResponsive(false,'both',false,1,[canvas,anim_container,dom_overlay_container]);	
-	AdobeAn.compositionLoaded(lib.properties.id);
-	fnStartAnimation();
-}
-</script>
-<!-- write your code here -->
+	<meta charset="UTF-8">
+	<title>B2.12作業04</title>
+	<style>
+		@font-face {
+		    font-family: MyFont01;
+		    src: url('宗楷體.ttf');
+		}
+		@font-face {
+		    font-family: MyFont02;
+		    src: url('竹風體01.ttf');
+		    src: url('竹風體02.ttf');
+		}
+		div {
+			margin: 15px;
+			text-align: justify;
+			color: darkred;
+		}
+		.box1{
+		    width: 20%;
+		    float: right;
+		    height: 150px;
+		    border-color: #D3D3D3;
+		    border-style: solid;
+		    border-width: 1px;
+		    font-family: MyFont01;
+		}
+		.box2{
+		    width: 20%;
+		    float: right;
+		    height: 150px;
+		    border-color: #C0C0C0;
+		    border-style: double;
+		    border-width: 2px;
+		    font-family: MyFont02;
+		}
+		.box3{
+		    width: 20%;
+		    float: right;
+		    height: 150px;
+		    border-color: #808080;
+		    border-style: dashed;
+		    border-width: 3px;
+		    font-family: "微軟正黑體";
+		}
+		.box4{
+		    width: 20%;
+		    float: right;
+		    height: 150px;
+		    border-color: #696969;
+		    border-style: dotted;
+		    border-width: 4px;
+		    font-family: "標楷體";
+		}
+		.box5{
+		    width: 20%;
+		    float: left;
+		    height: 150px;
+		    border-color: #708090;
+		    border-style: solid;
+		    border-width: 1px;
+		    font-family: MyFont01;
+		}
+		.box6{
+		    width: 20%;
+		    float: left;
+		    height: 150px;
+		    border-color: #DCDCDC;
+		    border-style: double;
+		    border-width: 2px;
+		    font-family: MyFont02;
+		}
+		.box7{
+		    width: 20%;
+		    float: left;
+		    height: 150px;
+		    border-color: #4D5D53;
+		    border-style: dashed;
+		    border-width: 3px;
+		    font-family: "微軟正黑體";
+		}
+		.box8{
+		    width: 20%;
+		    float: left;
+		    height: 150px;
+		    border-color: #000000;
+		    border-style: dotted;
+		    border-width: 4px;
+		    font-family: "標楷體";
+		}
+	</style>
 </head>
-<body onload="init();" style="margin:0px;">
-	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:640px; height:480px">
-		<canvas id="canvas" width="640" height="480" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
-		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:640px; height:480px; position: absolute; left: 0px; top: 0px; display: block;">
-		</div>
-	</div>
-</body>
+	<body>
+	 <div>
+		 <div class="box1">
+			 1. 要知道，不論你是感到受傷或興奮，那個感覺都是在你內的，他人或外在的事物不是你的感覺之成因。
+		 </div>
+		 <div class="box2">
+			 2. 不要總是期待好事發生，你的工作就是：無論發生什麼事，都去寬恕。
+		 </div>
+		 <div class="box3">
+			 3. 這世界存在的真正目的，是給你一個修正自己「不信」的機會
+		 </div>
+		 <div class="box4">
+			 4. 在你的自由內，沒有任何人能夠阻擋你放下恐懼與不安。
+		 </div>
+	 </div>
+	 <div>
+		 <div class="box5">
+			 5. 你的情緒導向系統是對準愛的，所以任何缺乏愛的經驗，都會給你負面的情緒回饋。
+		 </div>
+		 <div class="box6">
+			 6. 喜悅是你的本質，它是你的本我在沒有制約的狀況下所散發的感覺。
+		 </div>
+		 <div class="box7">
+			 7. 凡是對結局肯定不疑的人，才可能毫不焦慮地耐心等候。
+		 </div>
+		 <div class="box8">
+			 8. 在上帝的世界裡，問題不是靠方法去「解決」，而是經由確立「態度」去「決定」的。
+		 </div>
+	 </div>
+	</body>
 </html>
