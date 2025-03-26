@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>B2.12業06</title>
+	<style>
+		div {
+			margin: 5px;
+			color: blue;
+		}
+		h4 {
+			color: red;
+		}
+		label {
+			color: green;
+		}
+		input {
+			color: brown;
+		}
+	</style>
+</head>
+
+<body>
+<form id="form01">
+	<label>姓名: </label>
+	<input type="text" name="name01" value="林鈺婷"><br>
+	<label>收件地址: </label>
+	<input type="text" name="address01" value="台北市中山北路三段40號"><br>
+	<label>電話: </label>
+	<input type="tel" name="tel01" value="0970464504"><br>
+	<label>電子郵件: </label>
+	<input type="email" name="email01" value="u11205012@o365.ttu.edu.tw"><br>
+	<label>指定送貨日期: </label>
+	<input type="date" name="date01"><br>
+	<label>蛋糕種類(四選一): </label><br>
+	<input type="radio" name="cake" id="cake01" value="黑金宇治抹茶生乳捲">黑金宇治抹茶生乳捲 660元<br>
+	<input type="radio" name="cake" id="cake02" value="宇治焙茶生乳捲">宇治焙茶生乳捲 630元<br>
+	<input type="radio" name="cake" id="cake03" value="宇治抹茶生乳捲">宇治抹茶生乳捲 630元<br>
+	<input type="radio" name="cake" id="cake04" value="宇治抹茶巴斯克生起司">宇治抹茶巴斯克生起司 690元<br>
+</form>
+<br>
+<button onclick="shoppingInfo()"><h4>結帳</h4></button>
+<div id="demo"></div>
+
+<script>
+	function shoppingInfo() {
+        const x = document.getElementById("form01");
+        var item = "";
+        var price = 0;
+        var text = "<h4>您的購物車資訊如下</h4>";
+        var i;
+        for (i = 0; i < 5; i++) {
+            switch (i) {
+                case 0:
+                    item = "姓名: ";
+                    break;
+                case 1:
+                    item = "收件地址: ";
+                    break;
+                case 2:
+                    item = "電話: ";
+                    break;
+                case 3:
+                    item = "電子郵件: ";
+                    break;
+                case 4:
+                    item = "指定送貨日期: ";
+                    break;
+            }
+            text += item + x.elements[i].value + "<br>";
+        }
+        for (i = 5; i <= 8; i++) {
+            if (x.elements[i].checked) {
+                switch (i) {
+                    case 5:
+                        price = 660;
+                        break;
+                    case 6:
+                        price = 630;
+                        break;
+                    case 7:
+                        price = 630;
+                        break;
+                    case 8:
+                        price = 690;
+                        break;
+                }
+                text += "蛋糕種類: " + x.elements[i].value + "<br>";
+                text += "價格合計: " + price + "元<br>";
+                break;
+            }
+        }
+
+        document.getElementById("demo").innerHTML = text;
+    }
+</script>
+
+<h3>商品網站:</h3>
+<ul>
+	<li><a href="https://www.yannick.com.tw/shop/product?saleid=2501240007&item1=06&item2=6-1&gad_source=1&gclid=Cj0KCQjwqIm_BhDnARIsAKBYcmvaPXH4Im0Z-LNH2M2cJh6nnWDEljT1zxyO7DPhZlc_MuR-gq_lHI4aAk7bEALw_wcB" target="_blank">產品資訊</a></li>
+</ul>
+</body>
+</html>
