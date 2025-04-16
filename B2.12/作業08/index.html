@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>B2.12業08</title>
+	<style>
+		div {
+			margin: 5px;
+			color: brown;
+		}
+		h4 {
+			color: red;
+		}
+		label {
+			color: #F4A460;
+		}
+		input {
+			color: brown;
+		}
+		td:nth-child(1){
+			color: brown;
+		}
+		table {
+		    width: 60%;
+		    border-color: #F4A460;
+		    border-style:solid;
+		    border-collapse: separate;
+		    text-align: left;
+            margin-left: 15px;
+		}
+		    th {
+		        text-align: center;
+		        border-color: #F4A460;
+		        border-style:solid;
+		        color: #4E342E;
+		    }
+		    tr {
+		        text-align: center;
+		        border-color: #F4A460;
+		        border-style:solid;
+		        color: #4E342E;
+		    }
+		    td {
+		        vertical-align: center;
+		        vertical-align: middle;
+		        border-color: #F4A460;
+		        border-style:solid;
+		        color: #4E342E;
+		    }
+	</style>
+</head>
+
+<body>
+<form id="form01">
+	<label>姓名: </label>
+	<input type="text" name="name01" value="林鈺婷"><br>
+	<label>收件地址: </label>
+	<input type="text" name="address01" value="台北市中山北路三段40號"><br>
+	<label>電話: </label>
+	<input type="tel" name="tel01" value="0970464504"><br>
+	<label>電子郵件: </label>
+	<input type="email" name="email01" value="u11205012@o365.ttu.edu.tw"><br>
+	<label>指定送貨日期: </label>
+	<input type="date" name="date01"><br>
+	<label>水果種類(四選一): </label><br>
+	<input type="radio" name="cake" id="cake01" value="嘉義極光哈密瓜(2顆)">嘉義極光哈密瓜(2顆) 1099元<br>
+	<input type="radio" name="cake" id="cake02" value="拉拉山洪家水蜜桃(6粒)">拉拉山洪家水蜜桃(6顆) 1150元<br>
+	<input type="radio" name="cake" id="cake03" value="拉拉山巴陵部落水蜜桃(6顆)">拉拉山巴陵部落水蜜桃(6顆) 1280元<br>
+	<input type="radio" name="cake" id="cake04" value="枋山愛文芒果(5台斤)">枋山愛文芒果(5台斤) 935元<br>
+</form>
+<br>
+<button onclick="shoppingInfo()"><h4>結帳</h4></button>
+<div id="demo"></div>
+
+<script>
+	function shoppingInfo() {
+        const x = document.getElementById("form01");
+        var item = "";
+        var price = 0;
+        var text = "<h4>您的購物車資訊如下</h4>";
+        text += "<table>";
+
+        for (i = 0; i < 5; i++) {
+        	text += "<tr>";
+        	switch (i) {
+                case 0:
+                    item = "姓名: ";
+                    break;
+                case 1:
+                    item = "收件地址: ";
+                    break;
+                case 2:
+                    item = "電話: ";
+                    break;
+                case 3:
+                    item = "電子郵件: ";
+                    break;
+                case 4:
+                    item = "指定送貨日期: ";
+                    break;
+            }
+        	text += "<td>" + item  + "</td>";
+        	text += "<td>" + x.elements[i].value + "</td>";
+        	text += "</tr>";
+        }
+
+        for (i = 5; i < 9; i++) {
+        	if (x.elements[i].checked === true) {
+        		switch (i) {
+                    case 5:
+                        price = 1099;
+                        break;
+                    case 6:
+                        price = 1150;
+                        break;
+                    case 7:
+                        price = 1280;
+                        break;
+                    case 8:
+                        price = 935;
+                        break;
+                }
+        		text += "<tr>";
+        		text += "<td>" + "水果種類: " + "</td>";
+        		text += "<td>" + x.elements[i].value + "</td>";
+        		text += "</tr>";
+        		text += "<tr>";
+        		text += "<td>" + "價格合計: " + "</td>";
+        		text += "<td>" + price + "元</td>";
+        		text += "</tr>";
+            }
+        }
+        text += "</table>";
+        document.getElementById("demo").innerHTML = text;
+    }
+</script>
+
+<h3>產品資訊:</h3>
+<ul>
+	<li><a href="https://www.wonderfulfood.com.tw/Product/UFJEMDAwMDIwMDU2OA%3D%3D" target="_blank">嘉義極光哈密瓜</a></li>
+	<li><a href="https://www.wonderfulfood.com.tw/Product/UFJEMDAwMDQwMDIyMw%3D%3D">拉拉山洪家水蜜桃</a></li>
+	<li><a href="https://www.wonderfulfood.com.tw/Product/UFJEMDAwMDQwMDQ0Nw%3D%3D" target="_blank">拉拉山巴陵部落水蜜桃</a></li>
+	<li><a href="https://www.wonderfulfood.com.tw/Product/UFJEMDAwMDIwMTIzOQ%3D%3D" target="_blank">枋山愛文芒果</a></li>
+</ul>
+</body>
+</html>
